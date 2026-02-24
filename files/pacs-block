@@ -1,0 +1,40 @@
+#!/bin/bash
+# Comando rápido para controle do PACS
+# Versão: 1.0.0
+
+case "$1" in
+    "on")
+        echo "🔒 Ativando bloqueio..."
+        manage-block.sh on
+        ;;
+    "off")
+        echo "🔓 Desativando bloqueio..."
+        manage-block.sh off
+        ;;
+    "status")
+        manage-block.sh status
+        ;;
+    "init")
+        echo "⚙️  Inicializando sistema..."
+        manage-block.sh init
+        ;;
+    "check-updates")
+        manage-block.sh check-updates
+        ;;
+    "update")
+        echo "📦 Atualizando sistema..."
+        manage-block.sh update
+        ;;
+    *)
+        echo "PACS Block v1.0.0"
+        echo "Uso: pacs-block {on|off|status|init|check-updates|update}"
+        echo ""
+        echo "Exemplos:"
+        echo "  pacs-block on       # Ativa bloqueio"
+        echo "  pacs-block off      # Remove bloqueio"
+        echo "  pacs-block status   # Verifica status"
+        echo "  pacs-block init     # Configura sistema"
+        echo "  pacs-block check-updates # Verifica atualizações"
+        echo "  pacs-block update   # Atualiza sistema"
+        ;;
+esac

@@ -1,0 +1,9 @@
+[Unit]
+Description=PACS Block System Update Check
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/check-updates.sh
+User=root
+Group=root
