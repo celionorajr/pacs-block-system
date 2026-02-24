@@ -1,40 +1,47 @@
 #!/bin/bash
 # Comando rápido para controle do PACS
-# Versão: 1.0.0
+# Versão: 2.0.0
+
+VERSION="2.0.0"
 
 case "$1" in
     "on")
         echo "🔒 Ativando bloqueio..."
-        manage-block.sh on
+        /usr/local/bin/manage-block.sh on
         ;;
     "off")
         echo "🔓 Desativando bloqueio..."
-        manage-block.sh off
+        /usr/local/bin/manage-block.sh off
         ;;
-    "status")
-        manage-block.sh status
+    "status"|"st")
+        /usr/local/bin/manage-block.sh status
         ;;
     "init")
         echo "⚙️  Inicializando sistema..."
-        manage-block.sh init
+        /usr/local/bin/manage-block.sh init
         ;;
-    "check-updates")
-        manage-block.sh check-updates
+    "check-updates"|"check")
+        /usr/local/bin/manage-block.sh check-updates
         ;;
-    "update")
+    "update"|"up")
         echo "📦 Atualizando sistema..."
-        manage-block.sh update
+        /usr/local/bin/manage-block.sh update
+        ;;
+    "help"|"-h"|"--help")
+        echo "PACS Block v$VERSION"
+        echo "Uso: pacs-block [COMANDO]"
+        echo ""
+        echo "Comandos:"
+        echo "  on              - Ativar bloqueio"
+        echo "  off             - Desativar bloqueio"
+        echo "  status, st      - Verificar status"
+        echo "  init            - Configurar sistema"
+        echo "  check-updates   - Verificar atualizações"
+        echo "  update, up      - Atualizar sistema"
+        echo "  help            - Mostrar ajuda"
         ;;
     *)
-        echo "PACS Block v1.0.0"
-        echo "Uso: pacs-block {on|off|status|init|check-updates|update}"
-        echo ""
-        echo "Exemplos:"
-        echo "  pacs-block on       # Ativa bloqueio"
-        echo "  pacs-block off      # Remove bloqueio"
-        echo "  pacs-block status   # Verifica status"
-        echo "  pacs-block init     # Configura sistema"
-        echo "  pacs-block check-updates # Verifica atualizações"
-        echo "  pacs-block update   # Atualiza sistema"
+        echo "PACS Block v$VERSION"
+        echo "Uso: pacs-block {on|off|status|init|check-updates|update|help}"
         ;;
 esac
